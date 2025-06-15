@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/src/vanta.fog.js";
 import * as THREE from "three";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
