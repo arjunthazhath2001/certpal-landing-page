@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/src/vanta.fog.js";
 import * as THREE from "three";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 
 export default function Home() {
   const vantaRef = useRef(null);
@@ -42,19 +44,44 @@ export default function Home() {
       </div>
 
       {/* Left hand */}
-      <div className="absolute bottom-50 -left-10 z-10">
-        <Image src="/hand-left.png" alt="Left Hand" width={500} height={500} />
-      </div>
+      <motion.div
+      className="absolute bottom-50 -left-10 z-10"
+      animate={{ y: [0, -10, 0] }}
+      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+      <Image src="/hand-left.png" alt="Left Hand" width={500} height={500} className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
+      </motion.div>
+
 
       {/* Right hand */}
-      <div className="absolute bottom-10 -right-8 z-10">
-        <Image src="/hand-right.png" alt="Right Hand" width={500} height={500} />
-      </div>
+      <motion.div
+        className="absolute bottom-10 -right-8 z-10"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      >
+        <Image src="/hand-right.png" alt="Right Hand" width={500} height={500} className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
+      </motion.div>
 
-      {/* Certificate in center */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <Image src="/certificate.png" alt="Certificate" width={500} height={350} />
-      </div>
+      
+      {/* Certificate in center with floating animation */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center z-10"
+        animate={{ y: [0, -10, 0] }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <Image
+          src="/certificate.png"
+          alt="Certificate"
+          width={500}
+          height={350}
+          className="drop-shadow-[0_0_20px_rgba(255,255,255,1)]"
+        />
+      </motion.div>
+
 
       {/* Bottom-left text */}
       <div className="absolute bottom-6 left-6 z-10">
