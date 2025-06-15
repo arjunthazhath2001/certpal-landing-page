@@ -58,18 +58,18 @@ export default function Home() {
 
       {/* Text tagline above certificate */}
       <div className="absolute top-[20%] md:top-[15%] w-full flex justify-center z-10">
-        <p className="text-white text-center text-2xl md:text-4xl font-bold px-4 max-w-[300px] md:max-w-[500px]">
+        <p className="text-white text-center text-3xl md:text-4xl font-bold px-4 max-w-[400px] md:max-w-[500px]">
           11+ Industries.<br></br> 5000+ Ceritifications.
         </p>
       </div>
 
       {/* Animated Certificate Montage */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-center z-10"
+        className="absolute inset-0 flex items-center top-20 justify-center z-10"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="relative w-[80%] sm:w-[60%] md:w-[40%] max-w-[500px] aspect-[5/3]">
+        <div className="relative w-[80%] sm:w-[60%] md:w-[40%] max-w-[600px] aspect-[5/3]">
      <AnimatePresence mode="wait">
       <motion.img
         key={certificateImages[currentCert]}
@@ -83,7 +83,7 @@ export default function Home() {
       </motion.div>
 
       {/* Email input */}
-      <div className="absolute bottom-20 w-full flex justify-center z-10">
+      <div className="absolute bottom-35 md:bottom-20 w-full flex justify-center z-10">
         <input
           type="email"
           placeholder="Enter email for further updates."
