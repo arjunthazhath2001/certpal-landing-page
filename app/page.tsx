@@ -3,12 +3,18 @@ import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/src/vanta.fog.js";
 import * as THREE from "three";
 import Image from "next/image";
-import { motion } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const certificateImages = [
+    "/cert1.png",
+    "/cert2.png",
+    "/cert3.png",
+    "/cert4.png",
+  ];
+  const [currentCert, setCurrentCert] = useState(0);
 
   useEffect(() => {
     if (!vantaEffect) {
@@ -33,73 +39,59 @@ export default function Home() {
     };
   }, [vantaEffect]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCert((prev) => (prev + 1) % certificateImages.length);
+    }, 600); // Rotate every 600ms
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Background effect */}
+      {/* Background */}
       <div ref={vantaRef} className="absolute top-0 left-0 w-full h-full z-0" />
 
-      {/* Certpal logo (top-left) */}
-      <div className="absolute top-6 left-6 z-10">
+      {/* Logo top-left */}
+      <div className="absolute top-10 left-12 z-10">
         <h1 className="text-white text-3xl font-extrabold">certpal</h1>
       </div>
 
-      {/* Left hand */}
-      <motion.div
-      className="absolute bottom-50 -left-10 z-10"
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-      >
-      <Image src="/hand-left.png" alt="Left Hand" width={500} height={500} className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
-      </motion.div>
-
-
-      {/* Right hand */}
-      <motion.div
-        className="absolute bottom-10 -right-8 z-10"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      >
-        <Image src="/hand-right.png" alt="Right Hand" width={500} height={500} className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
-      </motion.div>
-
-      
-      {/* Certificate in center with floating animation */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center z-10"
-        animate={{ y: [0, -10, 0] }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Image
-          src="/certificate.png"
-          alt="Certificate"
-          width={500}
-          height={350}
-          className="drop-shadow-[0_0_20px_rgba(255,255,255,1)]"
-        />
-      </motion.div>
-
-
-      {/* Bottom-left text */}
-      <div className="absolute bottom-6 left-6 z-10">
-        <p className="text-white text-xl font-semibold">
+      {/* Text tagline above certificate */}
+      <div className="absolute top-[12%] w-full flex justify-center z-10">
+        <p className="text-white text-center text-xl font-bold px-4">
           For all your certification needs.
         </p>
       </div>
 
-      {/* Email input (centered bottom) */}
+      {/* Animated Certificate Montage */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center z-10"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="relative w-[80%] sm:w-[60%] md:w-[40%] max-w-[500px] aspect-[5/3]">
+     <AnimatePresence mode="wait">
+      <motion.img
+        key={certificateImages[currentCert]}
+        src={certificateImages[currentCert]}
+        alt="Certificate"
+        className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(255,255,255,1)] absolute"
+      />
+    </AnimatePresence>
+
+        </div>
+      </motion.div>
+
+      {/* Email input */}
       <div className="absolute bottom-20 w-full flex justify-center z-10">
         <input
-        type="email"
-        placeholder="Enter email for further updates."
-        className="bg-black/20 backdrop-blur-sm text-white px-6 py-2 rounded-lg 
+          type="email"
+          placeholder="Enter email for further updates."
+          className="bg-black/20 backdrop-blur-sm text-white px-6 py-2 rounded-lg 
                   placeholder:text-white placeholder:opacity-70 w-[300px] text-center 
                   transition-all duration-300 transform 
                   hover:scale-105 hover:shadow-lg"
-      />
+        />
       </div>
     </div>
   );
