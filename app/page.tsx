@@ -5,6 +5,7 @@ import * as THREE from "three";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+
 export default function Home() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
@@ -34,47 +35,37 @@ export default function Home() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Background */}
+      {/* Background effect */}
       <div ref={vantaRef} className="absolute top-0 left-0 w-full h-full z-0" />
 
-      {/* Logo */}
-      <div className="absolute top-4 left-4 z-10">
-        <h1 className="text-white text-2xl sm:text-3xl font-extrabold">certpal</h1>
+      {/* Certpal logo (top-left) */}
+      <div className="absolute top-6 left-6 z-10">
+        <h1 className="text-white text-3xl font-extrabold">certpal</h1>
       </div>
 
-      {/* Left Hand */}
+      {/* Left hand */}
       <motion.div
-        className="absolute bottom-32 left-0 sm:left-[-40px] z-10"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute bottom-50 -left-10 z-10"
+      animate={{ y: [0, -10, 0] }}
+      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Image
-          src="/hand-left.png"
-          alt="Left Hand"
-          width={300}
-          height={300}
-          className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] sm:w-[400px] sm:h-[400px]"
-        />
+      <Image src="/hand-left.png" alt="Left Hand" width={500} height={500} className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
       </motion.div>
 
-      {/* Right Hand */}
+
+      {/* Right hand */}
       <motion.div
-        className="absolute bottom-10 right-0 sm:right-[-32px] z-10"
+        className="absolute bottom-10 -right-8 z-10"
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       >
-        <Image
-          src="/hand-right.png"
-          alt="Right Hand"
-          width={300}
-          height={300}
-          className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] sm:w-[400px] sm:h-[400px]"
-        />
+        <Image src="/hand-right.png" alt="Right Hand" width={500} height={500} className="drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" />
       </motion.div>
 
-      {/* Certificate */}
+      
+      {/* Certificate in center with floating animation */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-center z-10 px-4"
+        className="absolute inset-0 flex items-center justify-center z-10"
         animate={{ y: [0, -10, 0] }}
         transition={{
           duration: 3,
@@ -85,29 +76,30 @@ export default function Home() {
         <Image
           src="/certificate.png"
           alt="Certificate"
-          width={400}
-          height={300}
-          className="w-[90%] max-w-[500px] drop-shadow-[0_0_20px_rgba(255,255,255,1)]"
+          width={500}
+          height={350}
+          className="drop-shadow-[0_0_20px_rgba(255,255,255,1)]"
         />
       </motion.div>
 
-      {/* Tagline */}
-      <div className="absolute bottom-4 left-4 sm:left-6 z-10">
-        <p className="text-white text-base sm:text-lg font-semibold">
+
+      {/* Bottom-left text */}
+      <div className="absolute bottom-6 left-6 z-10">
+        <p className="text-white text-xl font-semibold">
           For all your certification needs.
         </p>
       </div>
 
-      {/* Email Input */}
-      <div className="absolute bottom-20 w-full flex justify-center z-10 px-4">
+      {/* Email input (centered bottom) */}
+      <div className="absolute bottom-20 w-full flex justify-center z-10">
         <input
-          type="email"
-          placeholder="Enter email for further updates."
-          className="bg-black/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg 
-                     placeholder:text-white placeholder:opacity-70 w-full max-w-xs 
-                     text-center transition-all duration-300 transform 
-                     hover:scale-105 hover:shadow-lg"
-        />
+        type="email"
+        placeholder="Enter email for further updates."
+        className="bg-black/20 backdrop-blur-sm text-white px-6 py-2 rounded-lg 
+                  placeholder:text-white placeholder:opacity-70 w-[300px] text-center 
+                  transition-all duration-300 transform 
+                  hover:scale-105 hover:shadow-lg"
+      />
       </div>
     </div>
   );
