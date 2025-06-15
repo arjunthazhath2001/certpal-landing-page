@@ -13,6 +13,12 @@ export default function Home() {
     "/cert2.png",
     "/cert3.png",
     "/cert4.png",
+    "/cert5.png",
+    "/cert6.png",
+    "/cert7.png",
+    "/cert8.png",
+    "/cert9.png",
+    "/cert10.png",
   ];
   const [currentCert, setCurrentCert] = useState(0);
 
@@ -87,7 +93,7 @@ export default function Home() {
         <input
           type="email"
           placeholder="Enter email for further updates."
-          className="bg-black/20 backdrop-blur-sm text-white px-6 py-2 rounded-lg 
+          className="bg-black/50 backdrop-blur-sm text-white px-6 py-2 rounded-lg 
                   placeholder:text-white placeholder:opacity-70 w-[300px] text-center 
                   transition-all duration-300 transform 
                   hover:scale-105 hover:shadow-lg"
