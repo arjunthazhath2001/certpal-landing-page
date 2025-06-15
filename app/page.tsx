@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof FOG> | null>(null);
+
   const certificateImages = [
     "/cert1.png",
     "/cert2.png",
@@ -49,7 +50,7 @@ export default function Home() {
       setCurrentCert((prev) => (prev + 1) % certificateImages.length);
     }, 600); // Rotate every 600ms
     return () => clearInterval(interval);
-  }, []);
+  }, [certificateImages.length]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
