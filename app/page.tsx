@@ -57,9 +57,9 @@ export default function Home() {
       </div>
 
       {/* Text tagline above certificate */}
-      <div className="absolute top-[12%] w-full flex justify-center z-10">
-        <p className="text-white text-center text-xl font-bold px-4">
-          For all your certification needs.
+      <div className="absolute top-[20%] md:top-[15%] w-full flex justify-center z-10">
+        <p className="text-white text-center text-2xl md:text-4xl font-bold px-4 max-w-[300px] md:max-w-[500px]">
+          11+ Industries.<br></br> 5000+ Ceritifications.
         </p>
       </div>
 
