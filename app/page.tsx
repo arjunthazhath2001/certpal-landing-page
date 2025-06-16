@@ -9,16 +9,16 @@ export default function Home() {
   const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof FOG> | null>(null);
 
   const certificateImages = [
-    "/cert1.png",
-    "/cert2.png",
-    "/cert3.png",
-    "/cert4.png",
-    "/cert5.png",
-    "/cert6.png",
-    "/cert7.png",
-    "/cert8.png",
-    "/cert9.png",
-    "/cert10.png",
+    "/cert1.webp",
+    "/cert2.webp",
+    "/cert3.webp",
+    "/cert4.webp",
+    "/cert5.webp",
+    "/cert6.webp",
+    "/cert7.webp",
+    "/cert8.webp",
+    "/cert9.webp",
+    "/cert10.webp",
   ];
   const [currentCert, setCurrentCert] = useState(0);
 
